@@ -13,12 +13,11 @@ import uploadRoutes from "./routes/uploadRoutes.js"
 import paymentsRoutes from "./routes/paymentRoutes.js"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 
+dotenv.config()
 connectDB()
 const app = express()
 
 app.use(express.json())
-
-dotenv.config()
 
 app.use(cors)
 app.use(function (req, res, next) {
