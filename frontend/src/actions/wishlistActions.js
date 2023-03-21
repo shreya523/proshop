@@ -26,7 +26,11 @@ export const addToWishlist = (productIds) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.post(`/api/wishlist`, { productIds }, config)
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/wishlist`,
+      { productIds },
+      config
+    )
 
     dispatch({
       type: WISHLIST_ADD_ITEM_SUCCESS,
@@ -57,7 +61,10 @@ export const getWishlistItems = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.get(`/api/wishlist`, config)
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/api/wishlist`,
+      config
+    )
 
     dispatch({
       type: WISHLIST_GET_SUCCESS,
@@ -90,7 +97,11 @@ export const removeFromWishlist = (productId) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.put(`/api/wishlist`, { productId }, config)
+    const { data } = await axios.put(
+      `${process.env.REACT_APP_BASE_URL}/api/wishlist`,
+      { productId },
+      config
+    )
 
     dispatch({
       type: WISHLIST_REMOVE_ITEM_SUCCESS,

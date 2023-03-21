@@ -28,7 +28,11 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.post(`/api/cart`, { id, qty }, config)
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/cart`,
+      { id, qty },
+      config
+    )
 
     dispatch({
       type: CART_ADD_SUCCESS,
@@ -60,7 +64,10 @@ export const getCartItems = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.get(`/api/cart`, config)
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/api/cart`,
+      config
+    )
 
     dispatch({
       type: CART_GET_SUCCESS,
@@ -93,7 +100,7 @@ export const removeCartItems = (cartItemIds) => async (dispatch, getState) => {
       },
     }
     const { data } = await axios.put(
-      `/api/cart`,
+      `${process.env.REACT_APP_BASE_URL}/api/cart`,
       { cartItemIds, type: "REMOVE" },
       config
     )
@@ -131,7 +138,7 @@ export const updateCartItem =
       }
       const { qty, selected } = updateData
       const { data } = await axios.put(
-        `/api/cart`,
+        `${process.env.REACT_APP_BASE_URL}/api/cart`,
         { cartItemIds, selected, qty, type: "UPDATE" },
         config
       )

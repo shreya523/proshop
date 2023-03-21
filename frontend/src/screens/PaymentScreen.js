@@ -65,7 +65,11 @@ const PaymentScreen = () => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const order = await axios.post(`/api/config/razorpay`, {}, config)
+    const order = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/config/razorpay`,
+      {},
+      config
+    )
 
     const options = {
       key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard

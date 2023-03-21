@@ -31,7 +31,7 @@ export const saveShippingAddress =
         },
       }
       const { data } = await axios.post(
-        `/api/shipping`,
+        `${process.env.REACT_APP_BASE_URL}/api/shipping`,
         { shippingAddress },
         config
       )
@@ -68,7 +68,10 @@ export const getShippingAddresses = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.get(`/api/shipping`, config)
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/api/shipping`,
+      config
+    )
 
     dispatch({
       type: SHIPPING_ADD_GET_SUCCESS,
@@ -102,7 +105,10 @@ export const deleteShippingAddress = (id) => async (dispatch, getState) => {
     if (selectedAddress && selectedAddress._id === id) {
       localStorage.removeItem("shippingAddress")
     }
-    await axios.delete(`/api/shipping/${id}`, config)
+    await axios.delete(
+      `${process.env.REACT_APP_BASE_URL}/api/shipping/${id}`,
+      config
+    )
 
     dispatch({
       type: SHIPPING_ADD_REMOVE_SUCCESS,
@@ -136,7 +142,7 @@ export const updateShippingAddress =
       }
 
       const { data } = await axios.put(
-        `/api/shipping/${address._id}`,
+        `${process.env.REACT_APP_BASE_URL}/api/shipping/${address._id}`,
         address,
         config
       )
