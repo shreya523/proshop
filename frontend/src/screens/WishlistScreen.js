@@ -76,7 +76,13 @@ const WishlistScreen = () => {
                         <strong>{wishlistItem.name}</strong>
                       </Card.Text>
                     </Link>
-                    <Card.Text as='h3'>₹{wishlistItem.price}</Card.Text>
+                    <Card.Text as='h3'>
+                      {wishlistItem.price?.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </Card.Text>
                   </Card.Body>
                   <Card.Footer style={{ padding: "none" }}>
                     <button

@@ -24,7 +24,13 @@ const PriceDetails = () => {
                 }}
               >
                 <span>Total MRP</span>
-                <span className='text-end'>₹{itemsPrice}</span>
+                <span className='text-end'>
+                  {itemsPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
               <div
                 style={{
@@ -33,7 +39,13 @@ const PriceDetails = () => {
                 }}
               >
                 <span>Shipping Cost</span>
-                <span>₹{shippingPrice}</span>
+                <span>
+                  {shippingPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
               <div
                 style={{
@@ -42,7 +54,13 @@ const PriceDetails = () => {
                 }}
               >
                 <span>Other Taxes</span>
-                <span>₹{taxPrice}</span>
+                <span>
+                  {taxPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
             </ListGroup.Item>
             <ListGroup.Item>
@@ -53,7 +71,13 @@ const PriceDetails = () => {
                 }}
               >
                 <span>Total Amount</span>
-                <span>₹{totalPrice}</span>
+                <span>
+                  {totalPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
             </ListGroup.Item>
           </ListGroup>

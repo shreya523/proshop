@@ -35,10 +35,13 @@ const ProfileScreen = ({ location }) => {
     } else {
       if (!user || !user.name || success) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET })
-        dispatch(getUserDetails("profile"))
+        dispatch(getUserDetails("/profile"))
       } else {
         setName(user.name)
         setEmail(user.email)
+        setPhone(user.phone)
+        if (user.DOB) setDOB(user.DOB.substring(0, 10))
+        setGender(user.gender)
       }
     }
   }, [userInfo, navigate, dispatch, user, success])

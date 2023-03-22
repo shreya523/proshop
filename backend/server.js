@@ -19,11 +19,6 @@ const app = express()
 
 app.use(express.json())
 
-// app.use("/", (req, res, next) => {
-//   console.log("api running")
-//   next()
-// })
-
 cors.CorsOptions = {
   allowedHeaders: [
     "Origin",

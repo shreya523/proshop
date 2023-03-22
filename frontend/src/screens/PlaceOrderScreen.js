@@ -95,7 +95,18 @@ const PlaceOrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
+                          {item.qty} x{" "}
+                          {item.price.toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          })}{" "}
+                          ={" "}
+                          {(item.qty * item.price).toLocaleString("en-IN", {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          })}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -114,25 +125,49 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>₹{cart.itemsPrice}</Col>
+                  <Col>
+                    {cart.itemsPrice?.toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping price</Col>
-                  <Col>₹{cart.shippingPrice}</Col>
+                  <Col>
+                    {cart.shippingPrice?.toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>₹{cart.taxPrice}</Col>
+                  <Col>
+                    {cart.taxPrice?.toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>₹{cart.totalPrice}</Col>
+                  <Col>
+                    {cart.totalPrice?.toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

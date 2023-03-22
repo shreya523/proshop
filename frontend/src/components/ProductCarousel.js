@@ -29,7 +29,13 @@ const ProductCarousel = () => {
               <Image src={product.image} alt={product.name} fluid />
               <Carousel.Caption className='carousel-caption'>
                 <h2>
-                  {product.name} (₹{product.price})
+                  {product.name} (
+                  {product.price?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                  )
                 </h2>
               </Carousel.Caption>
             </Link>

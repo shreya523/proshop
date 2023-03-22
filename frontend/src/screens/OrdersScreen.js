@@ -162,11 +162,13 @@ const OrderScreen = () => {
           </button>
         </Modal.Footer>
       </Modal>
-
       <h1>All orders</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
+            {(!orders || orders.length === 0) && (
+              <Message>No Orders Found</Message>
+            )}
             {orders.map((order) => (
               <ListGroup.Item key={order._id} style={{ border: "none" }}>
                 <Card>
@@ -176,7 +178,10 @@ const OrderScreen = () => {
                       <ListGroup.Item>
                         <Link
                           to={`/my/orders/details/${order._id}`}
-                          style={{ cursor: "pointer", textDecoration: "none" }}
+                          style={{
+                            cursor: "pointer",
+                            textDecoration: "none",
+                          }}
                         >
                           <Row>
                             <Col md={4}>
@@ -196,7 +201,13 @@ const OrderScreen = () => {
                             <Col md={8}>
                               <Card.Body>
                                 <Card.Title>{item.name}</Card.Title>
-                                <Card.Text>₹{item.price}</Card.Text>
+                                <Card.Text>
+                                  {item.price.toLocaleString("en-IN", {
+                                    maximumFractionDigits: 2,
+                                    style: "currency",
+                                    currency: "INR",
+                                  })}
+                                </Card.Text>
                               </Card.Body>
                             </Col>
                           </Row>
@@ -213,58 +224,6 @@ const OrderScreen = () => {
                         >
                           Rate Product
                         </button>
-
-                        {/* {item.review ? (
-                          <Row>
-                            <Col md={4}>Rate Product</Col>
-                            <Col md={8}>
-                              <Row>
-                                <Col>
-                                  <Rating value={item.review.rating} />
-                                </Col>
-                                <Col>
-                                  <button className='btn btn-secondary p-0'>
-                                    Edit Review
-                                  </button>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        ) : (
-                          <Row>
-                            <Col md={4}>Rate Product</Col>
-                            <Col md={8}>
-                              <Row>
-                                <Col md={4}>
-                                  <Rating
-                                    editMode={true}
-                                    changeRatingHandler={changeRatingHandler}
-                                    productId={item.product}
-                                  />
-                                </Col>
-                                <Col md={8}>
-                                  {productId === item.product &&
-                                    rating !== 0 && (
-                                      <>
-                                        <button className='btn btn-secondary py-0'>
-                                          Write Review
-                                        </button>
-                                        |
-                                        <button
-                                          className='btn btn-secondary py-0'
-                                          onClick={() =>
-                                            submitReviewHandler(item._id)
-                                          }
-                                        >
-                                          Submit Review
-                                        </button>
-                                      </>
-                                    )}
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        )} */}
                       </ListGroup.Item>
                     </ListGroup>
                   ))}

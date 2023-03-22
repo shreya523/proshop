@@ -147,7 +147,14 @@ const ProductDetailsScreen = () => {
                         text={`${product.numReviews} reviews`}
                       ></Rating>
                     </ListGroup.Item>
-                    <ListGroup.Item>Price: ₹{product.price}</ListGroup.Item>
+                    <ListGroup.Item>
+                      Price:{" "}
+                      {product.price?.toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </ListGroup.Item>
                     <ListGroup.Item>
                       Description: {product.description}
                     </ListGroup.Item>
@@ -160,7 +167,13 @@ const ProductDetailsScreen = () => {
                         <Row>
                           <Col>Price</Col>
                           <Col>
-                            <strong>₹{product.price}</strong>
+                            <strong>
+                              {product.price?.toLocaleString("en-IN", {
+                                maximumFractionDigits: 2,
+                                style: "currency",
+                                currency: "INR",
+                              })}
+                            </strong>
                           </Col>
                         </Row>
                       </ListGroup.Item>

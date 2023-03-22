@@ -73,7 +73,18 @@ const OrderDetailsScreen = () => {
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </Col>
                       <Col md={4}>
-                        {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
+                        {item.qty} x{" "}
+                        {item.price?.toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}{" "}
+                        ={" "}
+                        {(item.qty * item.price)?.toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -139,7 +150,13 @@ const OrderDetailsScreen = () => {
                 }}
               >
                 <span>Shipping Cost</span>
-                <span className='text-end'>₹{order.shippingPrice}</span>
+                <span className='text-end'>
+                  {order.shippingPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
             </ListGroup.Item>
             <ListGroup.Item>
@@ -150,7 +167,13 @@ const OrderDetailsScreen = () => {
                 }}
               >
                 <span>Other Taxes</span>
-                <span className='text-end'>₹{order.taxPrice}</span>
+                <span className='text-end'>
+                  {order.taxPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
             </ListGroup.Item>
             <ListGroup.Item>
@@ -161,7 +184,13 @@ const OrderDetailsScreen = () => {
                 }}
               >
                 <span>Total Amount</span>
-                <span className='text-end'>₹{order.totalPrice}</span>
+                <span className='text-end'>
+                  {order.totalPrice?.toLocaleString("en-IN", {
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "INR",
+                  })}
+                </span>
               </div>
             </ListGroup.Item>
             {loadingDeliver && <Loader />}

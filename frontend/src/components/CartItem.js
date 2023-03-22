@@ -35,7 +35,13 @@ const CartItem = ({
             {item.name}
           </Link>
         </Col>
-        <Col md={2}>₹{item.price}</Col>
+        <Col md={2}>
+          {item.price?.toLocaleString("en-IN", {
+            maximumFractionDigits: 2,
+            style: "currency",
+            currency: "INR",
+          })}
+        </Col>
         <Col md={2}>
           <Form.Control
             as='input'

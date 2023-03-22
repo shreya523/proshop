@@ -37,11 +37,19 @@ import OrderSuccessScreen from "./screens/OrderSuccessScreen"
 const App = () => {
   return (
     <Router>
-      <Header></Header>
+      <Header />
       <main className='py-3'>
         <Container>
           <Routes>
-            <Route path='/' element={<HomeScreen />} exact />
+            <Route
+              path='/'
+              element={
+                <main className='py-3'>
+                  <HomeScreen />
+                </main>
+              }
+              exact
+            />
             <Route path='/search/:keyword' element={<HomeScreen />} exact />
             <Route path='/page/:pageNumber' element={<HomeScreen />} exact />
             <Route
@@ -57,7 +65,6 @@ const App = () => {
             <Route path='/my/profile' element={<ProfileScreen />} />
             <Route path='/shipping' element={<ShippingScreen />} />
             <Route path='/payment' element={<PaymentScreen />} />
-            <Route path='/placeorder' element={<PlaceOrderScreen />} />
             <Route path='/order-success' element={<OrderSuccessScreen />} />
             <Route path='/my/orders' element={<OrdersScreen />} />
             <Route
@@ -97,7 +104,7 @@ const App = () => {
           </Routes>
         </Container>
       </main>
-      <Footer></Footer>
+      <Footer />
     </Router>
   )
 }
